@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './palette.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        //primaryColor: Colors.teal[400],
+        primarySwatch: Palette.kToDark,
       ),
       home: const MyHomePage(title: 'TIMO'),
     );
@@ -63,6 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -96,23 +101,24 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Welcome to Timo',
+              'Welcome to TIMO!',
             ),
             const Text(
-              'You have pushed the button this many times:',
+              'Sign in to your account',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+                style: style,
+                onPressed: () {},
+                child: const Text('Sign up using Google')),
+            const SizedBox(height: 15),
+            ElevatedButton(
+                style: style,
+                onPressed: () {},
+                child: const Text('Sign in using Google'))
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
